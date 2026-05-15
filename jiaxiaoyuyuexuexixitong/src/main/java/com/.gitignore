@@ -1,0 +1,17 @@
+# Compiled files
+/target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Application specific
+application-local.properties
