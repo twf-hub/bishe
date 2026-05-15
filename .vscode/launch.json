@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "由 com.sun.jdi.SharedMemoryListen 附加",
+            "type": "jdk",
+            "request": "attach",
+            "listen": "${command:jdk.java.attachDebugger.connector.com.sun.jdi.SharedMemoryListen.listen}"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-jiaxiaoyuyuexuexixitongApplication<jiaxiaoyuyuexuexixitong>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.jiaxiaoyuyuexuexixitongApplication",
+            "projectName": "jiaxiaoyuyuexuexixitong",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
