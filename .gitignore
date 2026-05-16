@@ -1,0 +1,21 @@
+.idea/
+.vscode/
+*.iml
+*.log
+Thumbs.db
+.DS_Store
+
+# Maven / Java build output
+target/
+**/target/
+
+# Frontend dependencies
+node_modules/
+
+# Runtime generated files
+upload/
+**/upload/
+
+# Local environment overrides
+application-local.properties
+application-local.yml

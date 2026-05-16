@@ -26,6 +26,15 @@ html,body{
 body {
   padding: 0;
   margin: 0;
-  
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--publicTextColor);
+  background: linear-gradient(180deg, var(--publicPageBg) 0%, #f7fbff 100%);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
 }
 </style>

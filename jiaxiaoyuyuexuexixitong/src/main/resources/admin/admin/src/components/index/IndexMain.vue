@@ -1,12 +1,7 @@
 <template>
-			<el-main style="padding: 10px 20px;
-						background-image: url(/jiaxiaoyuyuexuexixitong/img/back-list-img-bg.jpg);
-						background-size:100% 100%;
-						boxShadow: 0 0 6px rgba(0,0,0,0);
-                height:calc(100% - ${template2.back.menulist.menulistHeight});
-        		">
+			<el-main class="main-shell">
     		<bread-crumbs :title="title" class="bread-crumbs"></bread-crumbs>
-		<router-view class="router-view" style="height:auto;background: transparent;"></router-view>
+		<router-view class="router-view"></router-view>
 	</el-main>
 </template>
 
@@ -118,24 +113,25 @@
 	}
 
 	.el-main {
-		// background-color: #F6F8FA;
-		padding: 0 24px;
+		padding: 20px 24px 24px;
 		min-height: 100vh;
-		// padding-top: 60px;
+		background: transparent;
+	}
+
+	.main-shell {
+		background: transparent;
 	}
 
 	.router-view {
-		padding: 10px;
-		margin-top: 10px;
-		background: #FFFFFF;
+		padding: 0;
+		margin-top: 20px;
+		background: transparent;
 		box-sizing: border-box;
 	}
 
 	.bread-crumbs {
 		width: 100%;
-		// border-bottom: 1px solid #e9eef3;
-		// border-top: 1px solid #e9eef3;
-		margin-top: 10px;
+		margin-top: 0;
 		box-sizing: border-box;
 	}
 	

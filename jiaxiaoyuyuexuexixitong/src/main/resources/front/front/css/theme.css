@@ -2,9 +2,17 @@
 
 body {
     /* 1 全局公共主颜色 */
-    --publicMainColor: #409EFF;
+    --publicMainColor: #3182CE;
     /* 1 全局公共副颜色 */
-    --publicSubColor: #E6F2FF;
+    --publicSubColor: #EFF6FF;
+    --publicMainColorDeep: #1E40AF;
+    --publicMainColorDark: #2B6CB0;
+    --publicPageBg: #F0F7FF;
+    --publicCardBg: #FFFFFF;
+    --publicTextColor: #1A2C3E;
+    --publicTextMuted: #5A6D82;
+    --publicBorderColor: #D7E7F8;
+    --publicShadow: 0 12px 32px rgba(43, 108, 176, 0.12);
 }
 
 .bodyClass {}
@@ -253,6 +261,371 @@ body {
 .l-redio .layui-form-radioed>div {
     font-size: 14px;
     color: var(--publicMainColor, #808080);
+}
+
+html,
+body {
+    min-height: 100%;
+    background: var(--publicPageBg) !important;
+    color: var(--publicTextColor) !important;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: inherit !important;
+}
+
+#header {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-bottom: 1px solid #dceafb !important;
+    box-shadow: 0 12px 32px rgba(43, 108, 176, 0.08) !important;
+    backdrop-filter: blur(10px);
+}
+
+#header .nav-top {
+    height: 48px !important;
+    background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%) !important;
+    box-shadow: none !important;
+}
+
+#header .nav-top-title,
+#header .nav-top-tel {
+    color: #fff !important;
+}
+
+#header .navs {
+    height: 84px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+#header .navs .title,
+#header .navs li {
+    border-radius: 999px !important;
+    background: transparent !important;
+    color: var(--publicTextColor) !important;
+}
+
+#header .navs li {
+    padding: 16px 8px !important;
+    margin: 0 6px !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+}
+
+#header .navs li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    color: inherit !important;
+    transition: all .2s ease;
+}
+
+#header .navs li.current,
+#header .navs li:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+#header .navs li.current a,
+#header .navs li:hover a {
+    background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 24px rgba(49, 130, 206, 0.22);
+}
+
+#iframe {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    background: transparent;
+}
+
+.homeHeight {
+    min-height: calc(100vh - 132px) !important;
+    height: auto !important;
+    padding-top: 132px;
+    padding-bottom: 24px;
+    background: linear-gradient(180deg, var(--publicPageBg) 0%, #f8fbff 100%) !important;
+}
+
+.title.sub_borderColor.main_backgroundColor,
+.index-title.sub_backgroundColor,
+.sub_backgroundColor.data-detail-breadcrumb,
+.filter.main_backgroundColor,
+.main_backgroundColor.filter {
+    background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 28px rgba(49, 130, 206, 0.18) !important;
+}
+
+.box,
+.data-add-container,
+.data-detail,
+.right-container,
+.forum-container .bottom-container,
+.message-container .message-form,
+.message-container .message-list .message-item,
+.forum-container .forum-list .forum-item,
+.prolist .left_nav,
+.right-container.sub_borderColor,
+.data-list,
+.layui-tab-content,
+.layui-collapse,
+.layui-colla-item {
+    border-radius: 12px !important;
+}
+
+.right-container,
+.data-add-container,
+.data-detail,
+.forum-container .bottom-container,
+.message-container .message-form,
+.message-container .message-list .message-item,
+.forum-container .forum-list .forum-item,
+.right-container.sub_borderColor,
+.data-list,
+.layui-tab-content,
+.layui-collapse,
+.layui-colla-item {
+    background: var(--publicCardBg) !important;
+    border: 1px solid var(--publicBorderColor) !important;
+    box-shadow: var(--publicShadow) !important;
+}
+
+.box .list .list-item .list-item-body,
+.box .list .list-item-body,
+.recommend-item li,
+.news-home-container .layui-colla-item,
+.forum-container .forum-list .forum-item,
+.message-container .message-list .message-item,
+.data-list .list-item,
+.layui-card,
+.layui-card-body,
+.layui-card-header {
+    background: var(--publicCardBg) !important;
+    color: var(--publicTextColor) !important;
+    border-color: var(--publicBorderColor) !important;
+    border-radius: 12px !important;
+}
+
+.box .list .list-item .list-item-body,
+.box .list .list-item-body,
+.recommend-item li,
+.data-list .list-item,
+.layui-card {
+    box-shadow: var(--publicShadow) !important;
+}
+
+.box .list .name,
+.box .list .item-info .name,
+.title,
+.index-title,
+.forum-container .title,
+.detail .tit,
+.prolist .left_nav .dlx1 dt,
+.prolist .left_nav .dlx2 dd {
+    color: var(--publicTextColor) !important;
+}
+
+.line,
+.detail .related,
+.detail .other li,
+.forum-container .auth-container,
+.footer-item,
+.time,
+.message-container .message-list .message-item .content,
+.prolist .left_nav .dlx1 dd,
+.prolist .left_nav .dlx2 dt {
+    color: var(--publicTextMuted) !important;
+}
+
+.layui-btn,
+.btn-theme,
+button[type="button"],
+button[type="submit"],
+button[id$="Upload"],
+[id$="Upload"] {
+    border-radius: 8px !important;
+    transition: all .2s ease;
+}
+
+.layui-btn,
+.btn-theme,
+button[type="button"].main_backgroundColor,
+button[type="submit"].main_backgroundColor,
+button[id$="Upload"],
+.layui-btn-normal,
+.layui-btn-danger,
+.main_backgroundColor.layui-btn {
+    background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%) !important;
+    border-color: transparent !important;
+    color: #fff !important;
+    box-shadow: 0 10px 24px rgba(49, 130, 206, 0.2) !important;
+}
+
+.layui-btn:hover,
+.btn-theme:hover,
+button[id$="Upload"]:hover,
+[id$="Upload"]:hover {
+    background: linear-gradient(135deg, var(--publicMainColorDark) 0%, var(--publicMainColorDeep) 100%) !important;
+    color: #fff !important;
+}
+
+.layui-btn[disabled],
+.layui-btn-disabled,
+.layui-btn-disabled:hover {
+    opacity: .55;
+}
+
+.layui-input,
+.layui-textarea,
+.layui-select,
+.layui-unselect,
+.el-input__inner,
+.el-textarea__inner,
+.el-select .el-input__inner {
+    border: 1px solid var(--publicBorderColor) !important;
+    border-radius: 10px !important;
+    background: #fff !important;
+    color: var(--publicTextColor) !important;
+    box-shadow: none !important;
+}
+
+.layui-input:focus,
+.layui-textarea:focus,
+.el-input__inner:focus,
+.el-textarea__inner:focus {
+    border-color: var(--publicMainColor) !important;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.12) !important;
+}
+
+.layui-form-item.main_borderColor,
+.main_borderColor {
+    border-color: #d7e7f8 !important;
+}
+
+.sub_borderColor {
+    border-color: var(--publicBorderColor) !important;
+}
+
+.layui-table,
+.layui-table-view,
+.layui-table-header,
+.layui-table-page,
+.layui-table-box {
+    background: #fff !important;
+    border-color: #d7e7f8 !important;
+}
+
+.layui-table th {
+    background: #eef6ff !important;
+    color: var(--publicTextColor) !important;
+    font-weight: 700;
+}
+
+.layui-table tr:hover,
+.layui-table-hover,
+.layui-table tbody tr:hover {
+    background: #f0f7ff !important;
+}
+
+.layui-laypage a,
+.layui-laypage span {
+    border-radius: 8px !important;
+    border-color: #d7e7f8 !important;
+}
+
+.layui-laypage .layui-laypage-curr .layui-laypage-em {
+    background: var(--publicMainColor) !important;
+}
+
+.center-container,
+.message-container,
+.forum-container,
+.container,
+.recommend-list,
+.index-title,
+.con_1000 {
+    width: min(1200px, calc(100% - 32px)) !important;
+}
+
+.center-container {
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.prolist .left_nav {
+    overflow: hidden;
+}
+
+.prolist .left_nav .dlx1,
+.prolist .left_nav .dlx2 {
+    background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%) !important;
+}
+
+.prolist .left_nav ul li {
+    border: 1px solid var(--publicBorderColor) !important;
+    border-radius: 10px !important;
+    background: #f7fbff !important;
+    color: var(--publicTextColor) !important;
+}
+
+.prolist .left_nav ul li:hover,
+.onclickbiaoqian {
+    background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%) !important;
+    border-color: transparent !important;
+    color: #fff !important;
+}
+
+.prolist .left_nav ul li i,
+.onclickbiaoqian i,
+.prolist .left_nav ul li:hover i {
+    color: inherit !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    #header .navs {
+        height: auto !important;
+        padding: 12px !important;
+    }
+    #header .navs .list ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #iframe {
+        margin-top: 0 !important;
+    }
+    .homeHeight {
+        padding-top: 148px;
+    }
+    .center-container {
+        flex-direction: column;
+    }
+    .prolist .left_nav,
+    .right-container,
+    .right-container.sub_borderColor {
+        width: 100% !important;
+    }
+    .box .list .list-item,
+    .list-item2,
+    .list-item3,
+    .list-item4,
+    .list-item5 {
+        flex: 0 0 100% !important;
+    }
 }
 
 

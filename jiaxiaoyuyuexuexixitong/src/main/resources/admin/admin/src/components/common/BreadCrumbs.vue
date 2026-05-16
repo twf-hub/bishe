@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb class="app-breadcrumb" separator="/" style="height:40px;backgroundColor:var(--publicMainColor);borderRadius:4px;padding:0px 20px 0px 20px;boxShadow:0px 0px 0px #f903d4;borderWidth:0;borderStyle:dotted solid double dashed;borderColor:#ff0000;">
+  <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb" class="box" :style="1==1?'justifyContent:flex-start;':1==2?'justifyContent:center;':'justifyContent:flex-end;'">
       <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
         <span v-if="item.redirect==='noRedirect'||index==levelList.length-1" class="no-redirect" style="color:#606266">{{ item.name }}</span>
@@ -91,7 +91,13 @@ export default {
 .app-breadcrumb {
   display: block;
   font-size: 14px;
-  line-height: 50px;
+  line-height: 52px;
+  height: 52px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--publicBorderColor);
+  box-shadow: var(--publicShadow);
 
   .box {
     display: flex;
@@ -102,8 +108,18 @@ export default {
   }
 
   .no-redirect {
-    color: #97a8be;
+    color: var(--publicTextColor);
     cursor: text;
+    font-weight: 600;
+  }
+
+  ::v-deep .el-breadcrumb__inner,
+  ::v-deep .el-breadcrumb__inner a {
+    color: var(--publicTextMuted);
+  }
+
+  ::v-deep .el-breadcrumb__separator {
+    color: #8ea9c7;
   }
 }
 </style>

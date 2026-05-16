@@ -1,6 +1,14 @@
 :root {
     /* 1 全局公共主颜色 */
-    --publicMainColor: #409EFF;
+    --publicMainColor: #3182CE;
     /* 1 全局公共副颜色 */
-    --publicSubColor: #E6F2FF;
+    --publicSubColor: #EFF6FF;
+    --publicMainColorDeep: #1E40AF;
+    --publicMainColorDark: #2B6CB0;
+    --publicPageBg: #F0F7FF;
+    --publicCardBg: #FFFFFF;
+    --publicTextColor: #1A2C3E;
+    --publicTextMuted: #5A6D82;
+    --publicBorderColor: #D7E7F8;
+    --publicShadow: 0 12px 32px rgba(43, 108, 176, 0.12);
 }

@@ -1,24 +1,32 @@
 .form-content {
-    background: transparent;
-    padding: 16px 16px 0 16px;
+    background: var(--publicCardBg);
+    padding: 24px 24px 0;
+    border-radius: 12px;
+    box-shadow: var(--publicShadow);
+    border: 1px solid var(--publicBorderColor);
 }
 
 .table-content {
-    background: transparent;
-    padding: 0 16px;
+    background: var(--publicCardBg);
+    padding: 8px 24px 20px;
+    border-radius: 12px;
+    box-shadow: var(--publicShadow);
+    border: 1px solid var(--publicBorderColor);
 }
 
 .pagination-content {
-    margin-top: 16px;
-    padding-bottom: 16px;
+    margin-top: 20px;
+    padding-bottom: 4px;
     text-align: right;
-    padding-right: 16px;
+    padding-right: 0;
 }
 
 .detail-form-content {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
+    background: var(--publicCardBg);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--publicShadow);
+    border: 1px solid var(--publicBorderColor);
     .el-input {
         min-width: 200px;
         max-width: 600px;
@@ -53,4 +61,163 @@
 .btn-login {
     margin-top: 50px;
     width: 100%;
+}
+
+body {
+    color: var(--publicTextColor);
+}
+
+.el-main,
+.router-view,
+.detail-form-content,
+.form-content,
+.table-content {
+    box-sizing: border-box;
+}
+
+.el-card,
+.el-dialog,
+.el-message-box,
+.el-picker-panel,
+.el-dropdown-menu {
+    border-radius: 12px;
+    border-color: var(--publicBorderColor);
+    box-shadow: var(--publicShadow);
+}
+
+.el-dialog__header,
+.el-message-box__header {
+    border-bottom: 1px solid #edf4fb;
+}
+
+.el-dialog__title,
+.el-form-item__label,
+.el-card__header,
+.el-descriptions__title {
+    color: var(--publicTextColor);
+    font-weight: 600;
+}
+
+.el-input__inner,
+.el-textarea__inner,
+.el-select .el-input__inner,
+.el-date-editor .el-input__inner {
+    height: 42px;
+    line-height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--publicBorderColor);
+    color: var(--publicTextColor);
+    background: #fdfefe;
+    box-shadow: none;
+}
+
+.el-textarea__inner {
+    min-height: 120px !important;
+    line-height: 1.7;
+}
+
+.el-input__inner:focus,
+.el-textarea__inner:focus {
+    border-color: var(--publicMainColor);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.12);
+}
+
+.el-button {
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 600;
+    transition: all .2s ease;
+}
+
+.el-button--primary {
+    background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%);
+    border-color: var(--publicMainColor);
+}
+
+.el-button--primary:hover,
+.el-button--primary:focus {
+    background: linear-gradient(135deg, var(--publicMainColorDark) 0%, var(--publicMainColorDeep) 100%);
+    border-color: var(--publicMainColorDark);
+}
+
+.el-button.is-disabled,
+.el-button.is-disabled:hover,
+.el-button.is-disabled:focus {
+    opacity: .55;
+}
+
+.el-button--default,
+.el-button--primary.is-plain,
+.el-button--success.is-plain,
+.el-button--warning.is-plain,
+.el-button--danger.is-plain {
+    background: #fff;
+    color: var(--publicMainColorDark);
+    border-color: #cfe0f3;
+}
+
+.el-table {
+    color: var(--publicTextColor);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.el-table th.el-table__cell {
+    background: #eef6ff;
+    color: var(--publicTextColor);
+    font-weight: 700;
+    border-bottom-color: #d9e8f8;
+}
+
+.el-table td.el-table__cell,
+.el-table th.el-table__cell.is-leaf {
+    border-bottom: 1px solid #ebf3fb;
+}
+
+.el-table .el-table__row:hover>td {
+    background: #f0f7ff !important;
+}
+
+.el-pagination {
+    padding-top: 4px;
+}
+
+.el-pagination .btn-next,
+.el-pagination .btn-prev,
+.el-pagination .el-pager li {
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #d8e7f8;
+    min-width: 34px;
+    height: 34px;
+    line-height: 34px;
+    color: var(--publicTextMuted);
+}
+
+.el-pagination .el-pager li.active {
+    background: var(--publicMainColor);
+    border-color: var(--publicMainColor);
+    color: #fff;
+}
+
+.el-upload--picture-card {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    border: 1px dashed #9fc0e6;
+    background: #f5faff;
+}
+
+.el-upload--picture-card:hover,
+.el-upload-list--picture-card .el-upload-list__item:hover {
+    border-color: var(--publicMainColor);
+}
+
+.el-upload-list--picture-card .el-upload-list__item {
+    border-radius: 12px;
+    border-color: #cfe0f3;
+}
+
+.el-upload__tip {
+    color: var(--publicTextMuted) !important;
 }

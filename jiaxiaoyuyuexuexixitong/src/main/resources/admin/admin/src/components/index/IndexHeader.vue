@@ -31,7 +31,7 @@
 				dialogVisible: false,
 				ruleForm: {},
 				user: {},
-                heads: {"headLogoutFontHoverColor":"rgba(255, 255, 255, 1)","headFontSize":"22px","headUserInfoFontColor":"rgba(255, 255, 255, 1)","headBoxShadow":"0 2px 8px rgba(0,0,0,0.08)","headTitleImgHeight":"40px","headLogoutFontHoverBgColor":"rgba(255,255,255,0.2)","headFontColor":"rgba(255, 255, 255, 1)","headTitleImg":false,"headHeight":"64px","headTitleImgBorderRadius":"20px","headTitleImgUrl":"http://codegen.caihongy.cn/20201021/cc7d45d9c8164b58b18351764eba9be1.jpg","headBgColor":"var(--publicMainColor)","headTitleImgBoxShadow":"0 1px 6px rgba(0,0,0,0.1)","headLogoutFontColor":"rgba(255, 255, 255, 1)","headUserInfoFontSize":"14px","headTitleImgWidth":"40px","headTitleStyle":"1","headLogoutFontSize":"14px"},
+				heads: {"headLogoutFontHoverColor":"#FFFFFF","headFontSize":"22px","headUserInfoFontColor":"#EAF4FF","headBoxShadow":"0 12px 32px rgba(30,64,175,0.18)","headTitleImgHeight":"40px","headLogoutFontHoverBgColor":"rgba(255,255,255,0.16)","headFontColor":"#FFFFFF","headTitleImg":false,"headHeight":"72px","headTitleImgBorderRadius":"20px","headTitleImgUrl":"http://codegen.caihongy.cn/20201021/cc7d45d9c8164b58b18351764eba9be1.jpg","headBgColor":"linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%)","headTitleImgBoxShadow":"0 1px 6px rgba(0,0,0,0.1)","headLogoutFontColor":"#FFFFFF","headUserInfoFontSize":"14px","headTitleImgWidth":"40px","headTitleStyle":"1","headLogoutFontSize":"14px"},
 			};
 		},
 		created() {
@@ -89,18 +89,20 @@
 
 <style lang="scss" scoped>
 	.navbar {
-		height: 60px;
-		line-height: 60px;
+		height: 72px;
+		line-height: 72px;
 		width: 100%;
-		padding: 0 34px;
+		padding: 0 28px;
 		box-sizing: border-box;
-		background-color: #ff00ff;
+		background: linear-gradient(135deg, var(--publicMainColor) 0%, var(--publicMainColorDeep) 100%);
 		position: relative;
 		z-index: 111;
+		border-bottom-left-radius: 18px;
+		border-bottom-right-radius: 18px;
 		
 		.right-menu {
 			position: absolute;
-			right: 34px;
+			right: 28px;
 			top: 0;
 			height: 100%;
 			display: flex;
@@ -109,15 +111,18 @@
 			z-index: 111;
 			
 			.user-info {
-				font-size: 16px;
-				color: red;
+				font-size: 14px;
+				color: #eaf4ff;
 				padding: 0 12px;
 			}
 			
 			.logout {
-				font-size: 16px;
-				color: red;
-				padding: 0 12px;
+				font-size: 14px;
+				color: #fff;
+				padding: 0 14px;
+				line-height: 38px;
+				height: 38px;
+				border-radius: 999px;
 				cursor: pointer;
 			}
 			
@@ -142,6 +147,7 @@
 				font-size: 24px;
 				color: #fff;
 				font-weight: 700;
+				letter-spacing: 0.02em;
 			}
 		}
 	}
