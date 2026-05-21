@@ -1,10 +1,7 @@
 package com.interceptor;
 
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-import com.alibaba.fastjson.JSONObject;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,8 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import com.alibaba.fastjson.JSONObject;
 import com.annotation.IgnoreAuth;
-import com.entity.EIException;
 import com.entity.TokenEntity;
 import com.service.TokenService;
 import com.utils.R;
@@ -37,6 +34,9 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
 
         String servletPath = request.getServletPath();
+        if(servletPath.startsWith("/admin/") || servletPath.startsWith("/front/")) {
+            return true;
+        }
         if("/dictionary/page".equals(request.getServletPath())  || "/file/upload".equals(request.getServletPath()) || "/yonghu/register".equals(request.getServletPath()) ){//请求路径是字典表或者文件上传 直接放行
             return true;
         }

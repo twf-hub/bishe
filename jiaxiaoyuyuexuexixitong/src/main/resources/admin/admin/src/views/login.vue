@@ -229,379 +229,231 @@
 <style lang="scss" scoped>
     .loginIn {
         min-height: 100vh;
-        position: relative;
-        background: linear-gradient(135deg, #E6F2FF 0%, #FFFFFF 50%, #F0F7FF 100%);
-
-
-    .loginInBt {
-        width: 100%;
-        height: 44px;
-        line-height: 44px;
-        margin: 20px auto 0;
-        padding: 0;
-        color: #fff;
-        font-size: 16px;
-        border-radius: 6px;
-        border-width: 0;
-        border-style: solid;
-        border-color: transparent;
-        background-color: var(--publicMainColor);
-        box-shadow: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 16px;
+        box-sizing: border-box;
+        background:
+            radial-gradient(circle at top left, rgba(91, 177, 255, 0.18), transparent 34%),
+            radial-gradient(circle at bottom right, rgba(44, 123, 229, 0.14), transparent 30%),
+            linear-gradient(135deg, #eaf4ff 0%, #f9fcff 50%, #edf6ff 100%);
     }
-    .register {
-        width: auto;
-        height: 24px;
-        line-height: 24px;
-        margin: 0 auto;
-        padding: 0 10px;
-        color: var(--publicMainColor);
-        font-size: 12px;
-        border-radius: 0;
-        border-width: 0;
-        border-style: solid;
-        border-color: transparent;
-        background-color: transparent;
-        box-shadow: none;
-        cursor: pointer;
-    }
-    .reset {
-        width: auto;
-        height: 24px;
-        line-height: 24px;
-        margin: 0;
-        padding: 0;
-        color: var(--publicMainColor);
-        font-size: 12px;
-        border-radius: 0;
-        border-width: 0;
-        border-style: solid;
-        border-color: transparent;
-        background-color: transparent;
-        box-shadow: none;
-    }
-
 
     .left {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate3d(-50%,-50%,0);
+        position: relative;
+        left: auto;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        max-width: 440px;
+        margin: 0 auto;
+        padding: 36px 34px 28px;
         box-sizing: border-box;
-        width: 400px;
-        height: auto;
-        margin: 0;
-        padding: 40px 30px 30px;
-        border-radius: 12px;
-        border-width: 0;
-        border-style: solid;
-        border-color: transparent;
-        background-color: #fff;
-        box-shadow: 0 8px 32px rgba(64,158,255,0.12);
+        border: 1px solid rgba(120, 170, 220, 0.22);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 24px 60px rgba(56, 114, 192, 0.16);
+        backdrop-filter: blur(8px);
+    }
+
+    .center,
+    .right {
+        position: static;
+        left: auto;
+        top: auto;
+        right: auto;
+        transform: none;
+    }
 
     .login-form {
-        background-color: transparent;
-        width: 100%;
-        right: inherit;
-        padding: 0;
-        box-sizing: border-box;
         display: flex;
-        position: initial;
-        justify-content: center;
         flex-direction: column;
+        width: 100%;
+        padding: 0;
+        background: transparent;
+        box-sizing: border-box;
     }
 
     .title-container {
+        margin-bottom: 28px;
         text-align: center;
-        font-size: 24px;
+    }
 
     .title {
-        width: 100%;
-        line-height: 1.4;
-        margin: 0 auto 30px;
-        padding: 0;
-        color: #333;
-        font-size: 22px;
-        font-weight: 600;
-        border-radius: 0;
-        border-width: 0;
-        border-style: solid;
-        border-color: transparent;
-        background-color: transparent;
-        box-shadow: none;
-    }
+        margin: 0;
+        color: #183b66;
+        font-size: 34px;
+        line-height: 1.2;
+        font-weight: 700;
     }
 
     .el-form-item {
         position: relative;
+        margin-bottom: 18px;
+    }
 
-    & /deep/ .el-form-item__content {
-          line-height: initial;
-      }
-
-    & /deep/ .el-radio__label {
-          width: auto;
-          height: 14px;
-          line-height: 14px;
-          margin: 0;
-          padding: 0 0 0 10px;
-          color: rgba(129, 129, 129, 1);
-          font-size: 14px;
-          border-radius: 0;
-          border-width: 0;
-          border-style: solid;
-          border-color: rgba(255, 255, 255, 0);
-          background-color: rgba(255, 255, 255, 0);
-          box-shadow: 0 0 6px rgba(255,0,0,0);
-          text-align: left;
-      }
-    & /deep/ .el-radio.is-checked .el-radio__label {
-          width: auto;
-          height: 14px;
-          line-height: 14px;
-          margin: 0;
-          padding: 0 0 0 10px;
-          color: rgba(0, 0, 0, 1);
-          font-size: 14px;
-          border-radius: 0;
-          border-width: 0;
-          border-style: solid;
-          border-color: rgba(255, 255, 255, 0);
-          background-color: rgba(255, 255, 255, 0);
-          box-shadow: 0 0 6px rgba(255,0,0,0);
-          text-align: left;
-      }
-    & /deep/ .el-radio__inner {
-          width: 14px;
-          height: 14px;
-          margin: 0;
-          padding: 0;
-          border-radius: 100%;
-          border-width: 1px;
-          border-style: solid;
-          border-color: #dcdfe6;
-          background-color: rgba(255, 255, 255, 1);
-          box-shadow: 0 0 6px rgba(255,0,0,0);
-      }
-    & /deep/ .el-radio.is-checked .el-radio__inner {
-          width: 14px;
-          height: 14px;
-          margin: 0;
-          padding: 0;
-          border-radius: 100%;
-          border-width: 1px;
-          border-style: solid;
-          border-color: rgba(0, 0, 0, 1);
-          background-color: rgba(19, 19, 19, 1);
-          box-shadow: 0 0 6px rgba(255,0,0,0);
-      }
+    .el-form-item /deep/ .el-form-item__content {
+        line-height: normal;
+    }
 
     .svg-container {
-        padding: 6px 5px 6px 15px;
-        color: #889aa4;
-        vertical-align: middle;
-        display: inline-block;
         position: absolute;
         left: 0;
         top: 0;
         z-index: 1;
-        padding: 0;
-        line-height: 40px;
-        width: 30px;
+        width: 42px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #8ba1bc !important;
+        font-size: 16px !important;
+        line-height: 48px !important;
         text-align: center;
     }
 
     .el-input {
         display: inline-block;
-    // height: 40px;
         width: 100%;
-
-    & /deep/ input {
-          background: transparent;
-          border: 0px;
-          -webkit-appearance: none;
-          padding: 0 15px 0 30px;
-          color: var(--publicMainColor);
-          height: 40px;
-
-          width: 100%;
-          height: 40px;
-          line-height: 40px;
-          margin: 0;
-          padding: 0 15px;
-          color: #333;
-          font-size: 14px;
-          border-radius: 6px;
-          border-width: 1px;
-          border-style: solid;
-          border-color: #DCDFE6;
-          background-color: #fff;
-          box-shadow: none;
-      }
     }
 
+    .el-input /deep/ input {
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        padding: 0 16px 0 42px;
+        color: #183b66;
+        font-size: 14px;
+        border: 1px solid #dbe7f3;
+        border-radius: 14px;
+        background: #f8fbff;
+        box-shadow: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     }
 
-
+    .el-input /deep/ input:focus {
+        border-color: #4d90f6;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(77, 144, 246, 0.12);
     }
 
-    .center {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate3d(-50%,-50%,0);
+    .el-input /deep/ input::placeholder {
+        color: #90a4be;
     }
 
-    .right {
-        position: absolute;
-        left: inherit;
-        right: 0;
-        top: 0;
+    .role {
+        display: block !important;
+        margin-bottom: 22px;
     }
 
-    .code {
-    .el-form-item__content {
-        position: relative;
+    .role /deep/ .el-form-item__label {
+        float: none;
+        width: auto !important;
+        padding: 0 0 12px;
+        line-height: 1.2;
+        color: #6f86a2;
+        font-size: 14px;
+        text-align: left;
+    }
 
-    .getCodeBt {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translate3d(0, -50%, 0);
-        line-height: 40px;
-        width: 100px;
-        background-color: rgba(51,51,51,0.4);
-        color: #fff;
-        text-align: center;
-        border-radius: 0 4px 4px 0;
-        height: 40px;
-        overflow: hidden;
-        padding: 0;
-        margin: 0;
-        width: 100px;
-        height: 30px;
-        line-height: 30px;
-        border-radius: 0;
-        border-width: 0;
-        border-style: solid;
-        border-color: rgba(64, 158, 255, 1);
-        background-color: rgba(51, 51, 51, 0.4);
-        box-shadow: 0 0 6px rgba(255,0,0,0);
+    .role /deep/ .el-form-item__content {
+        margin-left: 0 !important;
+        line-height: 1.5;
+    }
 
-    span {
-        padding: 0 5px;
-        display: inline-block;
-        font-size: 16px;
+    .role /deep/ .el-radio {
+        margin-right: 18px;
+        margin-bottom: 6px;
+    }
+
+    .role /deep/ .el-radio__label {
+        padding-left: 10px;
+        color: #48627f;
+    }
+
+    .role /deep/ .el-radio.is-checked .el-radio__label {
+        color: #1e4f93;
         font-weight: 600;
     }
+
+    .role /deep/ .el-radio__inner {
+        border-color: #aac4e4;
     }
 
-    .el-input {
-    & /deep/ input {
-          padding: 0 130px 0 30px;
-      }
+    .role /deep/ .el-radio__inner::after {
+        width: 6px;
+        height: 6px;
     }
+
+    .role /deep/ .el-radio__input.is-checked .el-radio__inner {
+        border-color: #4d90f6;
+        background: #4d90f6;
     }
+
+    .loginInBt {
+        width: 100%;
+        height: 50px;
+        margin-top: 4px;
+        padding: 0;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #4f9eff 0%, #2f65d9 100%);
+        box-shadow: 0 16px 30px rgba(60, 122, 219, 0.26);
+    }
+
+    .loginInBt:hover,
+    .loginInBt:focus {
+        background: linear-gradient(135deg, #448feb 0%, #2757bf 100%);
     }
 
     .setting {
-    & /deep/ .el-form-item__content {
-      // padding: 0 15px;
-          box-sizing: border-box;
-          line-height: 32px;
-          height: 32px;
-          font-size: 14px;
-          color: #999;
-          margin: 0 !important;
-          display: flex;
+        margin: 18px 0 0;
+    }
+
+    .setting /deep/ .el-form-item__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin-left: 0 !important;
+        line-height: 1.5;
+        flex-wrap: wrap;
+    }
 
     .register {
-    // float: left;
-    // width: 50%;
-        text-align: center;
+        font-size: 14px;
+        color: #2f65d9;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .register:hover {
+        color: #173f8f;
     }
 
     .reset {
-        float: right;
-        width: 50%;
-        text-align: right;
-    }
-    }
+        color: #2f65d9;
     }
 
-    .style2 {
-        padding-left: 30px;
+    @media (max-width: 600px) {
+        .loginIn {
+            padding: 20px 12px;
+        }
 
-    .svg-container {
-        left: -30px !important;
-    }
+        .left {
+            padding: 28px 20px 24px;
+            border-radius: 20px;
+        }
 
-    .el-input {
-    & /deep/ input {
-          padding: 0 15px !important;
-      }
-    }
-    }
+        .title {
+            font-size: 28px;
+        }
 
-    .code.style2, .code.style3 {
-    .el-input {
-    & /deep/ input {
-          padding: 0 115px 0 15px;
-      }
-    }
-    }
-
-    .style3 {
-    & /deep/ .el-form-item__label {
-          padding-right: 6px;
-          height: 30px;
-          line-height: 30px;
-      }
-
-    .el-input {
-    & /deep/ input {
-          padding: 0 15px !important;
-      }
-    }
-    }
-
-    & /deep/ .el-form-item__label {
-          width: 30px;
-          height: 30px;
-          line-height: 30px;
-          margin: 0;
-          padding: 0;
-          color: #333;
-          font-size: 14px;
-          border-radius: 0;
-          border-width: 0;
-          border-style: solid;
-          border-color: rgba(0,0,0,0);
-          background-color: rgba(0,0,0,0);
-          box-shadow: 0 0 6px rgba(0,0,0,0);
-      }
-
-    .role {
-    & /deep/ .el-form-item__label {
-          width: 50px !important;
-          height: auto;
-          line-height: auto;
-          margin: 0 0 0 10%;
-          padding: 0;
-          color: rgba(153, 153, 153, 1);
-          font-size: 14px;
-          border-radius: 0;
-          border-width: 0;
-          border-style: solid;
-          border-color: rgba(64, 158, 255, 1);
-          background-color: rgba(255, 255, 255, 0);
-          box-shadow: 0 0 6px rgba(255,0,0,0);
-          text-align: left;
-      }
-
-    & /deep/ .el-radio {
-          margin-right: 12px;
-        color: var(--publicMainColor);
-      }
-    }
+        .setting /deep/ .el-form-item__content {
+            gap: 12px 18px;
+        }
     }
 </style>

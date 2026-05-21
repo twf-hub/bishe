@@ -20,7 +20,9 @@ public class InterceptorConfig extends WebMvcConfigurationSupport{
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getAuthorizationInterceptor())
         	.addPathPatterns("/**")
-        	// 静态资源 + 上传图片资源 都不走鉴权
+	        // 前后端静态资源、上传图片资源都不走鉴权，否则直接打开后台登录页会被拦截成 401 JSON
+	        .excludePathPatterns("/admin/**")
+	        .excludePathPatterns("/front/**")
         	.excludePathPatterns("/static/**")
         	.excludePathPatterns("/upload/**")
         	.excludePathPatterns("/img/**");

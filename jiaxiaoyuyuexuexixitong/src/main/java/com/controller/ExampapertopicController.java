@@ -2,35 +2,63 @@
 package com.controller;
 
 import java.io.File;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import com.alibaba.fastjson.JSONObject;
-import java.util.*;
-import org.springframework.beans.BeanUtils;
-import javax.servlet.http.HttpServletRequest;
-import org.springframework.web.context.ContextLoader;
-import javax.servlet.ServletContext;
-import com.service.TokenService;
-import com.utils.*;
-import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
-import com.service.DictionaryService;
-import org.apache.commons.lang3.StringUtils;
-import com.annotation.IgnoreAuth;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.annotation.IgnoreAuth;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.entity.*;
-import com.entity.view.*;
-import com.service.*;
+import com.entity.ExampaperEntity;
+import com.entity.ExampapertopicEntity;
+import com.entity.ExamquestionEntity;
+import com.entity.ExamrecordEntity;
+import com.entity.ExamredetailsEntity;
+import com.entity.ExamrewrongquestionEntity;
+import com.entity.view.ExampapertopicView;
+import com.service.DictionaryService;
+import com.service.ExampaperService;
+import com.service.ExampapertopicService;
+import com.service.ExamquestionService;
+import com.service.ExamrecordService;
+import com.service.ExamredetailsService;
+import com.service.ExamrewrongquestionService;
+import com.service.GonggaoService;
+import com.service.JiaolianService;
+import com.service.JiaolianYuyueService;
+import com.service.LiuyanService;
+import com.service.TokenService;
+import com.service.UsersService;
+import com.service.YonghuService;
+import com.service.ZiliaoCollectionService;
+import com.service.ZiliaoLiuyanService;
+import com.service.ZiliaoService;
+import com.utils.CommonUtil;
 import com.utils.PageUtils;
+import com.utils.PoiUtil;
 import com.utils.R;
-import com.alibaba.fastjson.*;
+import com.utils.StringUtil;
 
 /**
  * 试卷选题
@@ -396,7 +424,7 @@ public class ExampapertopicController {
     @RequestMapping("/zidongzujuan")
     public R zidongzujuan(@RequestParam Map<String, Object> params, HttpServletRequest request){
         //试卷科目
-        Integer kemuTypes = 1;
+        Integer kemuTypes = Integer.valueOf(String.valueOf(params.get("kemuTypes")));
         //试卷数据信息
         ExampaperEntity exampaperEntity = new ExampaperEntity();
         exampaperEntity.setId(Integer.valueOf(String.valueOf(params.get("exampaperId"))));
@@ -421,11 +449,12 @@ public class ExampapertopicController {
         ArrayList<ExampapertopicEntity> exampapertopicEntities = new ArrayList<>();
         //随机数
         Random random = new Random();
+        Date now = new Date();
 
         //查询全部试题信息
         Wrapper<ExamquestionEntity> queryWrapper = new EntityWrapper<ExamquestionEntity>().eq("kemu_types", kemuTypes);
         logger.info("sql语句:"+queryWrapper.getSqlSegment());
-        List<ExamquestionEntity> exampapertopicLists = examquestionService.selectList(null);
+        List<ExamquestionEntity> exampapertopicLists = examquestionService.selectList(queryWrapper);
         for (ExamquestionEntity examquestion: exampapertopicLists) {
             //将对应类型数据放入对应的list集合中
             if(examquestion.getExamquestionTypes() == 1){//单选题
@@ -450,6 +479,7 @@ public class ExampapertopicController {
                 exampapertopicEntity.setExamquestionId(danList.get(intRandom).getId());
                 exampapertopicEntity.setExampapertopicNumber(danFen);
                 exampapertopicEntity.setExampaperId(exampaperEntity.getId());
+                exampapertopicEntity.setCreateTime(now);
                 exampapertopicEntities.add(exampapertopicEntity);
                 danList.remove(intRandom);
             }
@@ -464,6 +494,7 @@ public class ExampapertopicController {
                 exampapertopicEntity.setExamquestionId(duoList.get(intRandom).getId());
                 exampapertopicEntity.setExampapertopicNumber(duoFen);
                 exampapertopicEntity.setExampaperId(exampaperEntity.getId());
+                exampapertopicEntity.setCreateTime(now);
                 exampapertopicEntities.add(exampapertopicEntity);
                 duoList.remove(intRandom);
             }
@@ -478,6 +509,7 @@ public class ExampapertopicController {
                 exampapertopicEntity.setExamquestionId(panList.get(intRandom).getId());
                 exampapertopicEntity.setExampapertopicNumber(panFen);
                 exampapertopicEntity.setExampaperId(exampaperEntity.getId());
+                exampapertopicEntity.setCreateTime(now);
                 exampapertopicEntities.add(exampapertopicEntity);
                 panList.remove(intRandom);
             }
@@ -492,9 +524,14 @@ public class ExampapertopicController {
                 exampapertopicEntity.setExamquestionId(tianList.get(intRandom).getId());
                 exampapertopicEntity.setExampapertopicNumber(tianFen);
                 exampapertopicEntity.setExampaperId(exampaperEntity.getId());
+                exampapertopicEntity.setCreateTime(now);
                 exampapertopicEntities.add(exampapertopicEntity);
                 tianList.remove(intRandom);
             }
+        }
+
+        if(exampapertopicEntities.isEmpty()){
+            return R.error("当前科目下没有符合条件的试题，无法自动组卷");
         }
 
         exampaperService.updateById(exampaperEntity);
@@ -535,18 +572,9 @@ public class ExampapertopicController {
         PageUtils page = exampapertopicService.queryPage(params);
         List<ExampapertopicView> exampapertopicView =(List<ExampapertopicView>)page.getList();
 
-        //试题id存放list
-        List<Integer> exampapertopicId = new ArrayList<>();
-        //循环选题信息获取试题id并存放起来
-        for (ExampapertopicEntity papertopic:exampapertopicView) {
-            exampapertopicId.add(papertopic.getExamquestionId());
+        if(exampapertopicView == null || exampapertopicView.isEmpty()){
+            return R.error("当前试卷暂无试题，请先组卷后再考试");
         }
-        //查询试题数据
-        List<ExamquestionEntity> examquestionEntity = examquestionService.selectBatchIds(exampapertopicId);
-        //试题数据存放到选题view中
-        examquestionEntity.forEach(item -> {
-            BeanUtils.copyProperties(item, exampapertopicView);
-        });
         //字典表数据转换
         for(ExampapertopicView c:exampapertopicView){
             //修改对应字典表字段
@@ -560,10 +588,21 @@ public class ExampapertopicController {
      */
     @RequestMapping("/submitQuestions")
     public R submitQuestions(@RequestParam Map<String, Object> params, HttpServletRequest request){
+        if(params.get("exampaperId") == null || StringUtil.isEmpty(String.valueOf(params.get("exampaperId")))){
+            return R.error("试卷信息缺失，无法提交");
+        }
         //答题编号
         String uuid = String.valueOf(new Date().getTime());
         //答题用户
-        Integer yonghuId = Integer.valueOf(String.valueOf(params.get("yonghuId")));
+        Integer yonghuId;
+        Object sessionUserId = request.getSession().getAttribute("userId");
+        if(sessionUserId != null){
+            yonghuId = Integer.valueOf(String.valueOf(sessionUserId));
+        }else if(params.get("yonghuId") != null && StringUtil.isNotEmpty(String.valueOf(params.get("yonghuId")))){
+            yonghuId = Integer.valueOf(String.valueOf(params.get("yonghuId")));
+        }else{
+            return R.error("用户信息缺失，无法提交");
+        }
         //试卷id
         Integer exampaperId = Integer.valueOf(String.valueOf(params.get("exampaperId")));
         //考试记录表信息
@@ -575,11 +614,17 @@ public class ExampapertopicController {
         examrecordEntity.setInsertTime(new Date());//时间
         examrecordEntity.setCreateTime(new Date());//时间
         //答题信息
-        List<Map<String,String>> answerList = (List<Map<String,String>>)JSON.parse(String.valueOf(params.get("answerList")));
+        if(params.get("answerList") == null || StringUtil.isEmpty(String.valueOf(params.get("answerList")))){
+            return R.error("答题信息为空，无法提交");
+        }
+        List<JSONObject> answerList = JSON.parseArray(String.valueOf(params.get("answerList")), JSONObject.class);
         //答题map
         HashMap<String, String> answerMap = new HashMap<>();
-        for (Map<String,String> map:answerList) {
-            answerMap.put(map.get("examquestionId"),map.get("answer"));
+        for (JSONObject answer : answerList) {
+            if(answer == null || answer.get("examquestionId") == null){
+                continue;
+            }
+            answerMap.put(String.valueOf(answer.get("examquestionId")), answer.getString("answer"));
         }
         //试题信息
         HashMap<String, Object> map = new HashMap<>();
@@ -595,15 +640,19 @@ public class ExampapertopicController {
         //错题详情
         List<ExamrewrongquestionEntity> examrewrongquestionList = new ArrayList<>();
 
-        if(exampapertopicList != null && exampapertopicList.size()>0){
-            boolean insert = examrecordService.insert(examrecordEntity);
-            if(!insert){
-                return R.error();
-            }
+        if(exampapertopicList == null || exampapertopicList.isEmpty()){
+            return R.error("当前试卷暂无试题，无法提交");
+        }
+
+        boolean insert = examrecordService.insert(examrecordEntity);
+        if(!insert){
+            return R.error();
         }
         //判断用户的答案
         for (ExampapertopicView exampapertopic:exampapertopicList) {
             boolean cuoti = false;
+            String examquestionId = String.valueOf(exampapertopic.getExamquestionId());
+            String myAnswer = answerMap.get(examquestionId);
             //答题信息
             ExamredetailsEntity examredetailsEntity = new ExamredetailsEntity();
                 //答题数据补充
@@ -619,9 +668,9 @@ public class ExampapertopicController {
                 examrewrongquestionEntity.setExampaperId(exampaperId);
                 examrewrongquestionEntity.setExamquestionId(exampapertopic.getExamquestionId());
             //判断是否答题
-            if(StringUtil.isNotEmpty(answerMap.get(exampapertopic.getExamquestionId()))){
-                examredetailsEntity.setExamredetailsMyanswer(answerMap.get(exampapertopic.getExamquestionId()));
-                examrewrongquestionEntity.setExamredetailsMyanswer(answerMap.get(exampapertopic.getExamquestionId()));
+            if(StringUtil.isNotEmpty(myAnswer)){
+                examredetailsEntity.setExamredetailsMyanswer(myAnswer);
+                examrewrongquestionEntity.setExamredetailsMyanswer(myAnswer);
                 //多选题判断对错
                 if(exampapertopic.getExamquestionTypes() == 2){
                     //正确答案
@@ -629,7 +678,7 @@ public class ExampapertopicController {
                     ArrayList<String> splitLs = new ArrayList<>();
                     splitLs.addAll(split);
                     //用户答案
-                    List<String> answer = Arrays.asList(answerMap.get(exampapertopic.getExamquestionId()).split(","));
+                    List<String> answer = Arrays.asList(myAnswer.split(","));
                     List<String> answerLs = new ArrayList<>();
                     answerLs.addAll(answer);
                     //判断用户是否回答正确
@@ -648,7 +697,7 @@ public class ExampapertopicController {
                     }
                 }else{
                     //其他题判断对错
-                    if(answerMap.get(exampapertopic.getExamquestionId()).equals(exampapertopic.getExamquestionAnswer())){//正确
+                    if(myAnswer.equals(exampapertopic.getExamquestionAnswer())){//正确
                         examredetailsEntity.setExamredetailsMyscore(exampapertopic.getExampapertopicNumber());
                         examrecordEntity.setTotalScore(examrecordEntity.getTotalScore()+exampapertopic.getExampapertopicNumber());
                     }else{//错误
@@ -664,13 +713,14 @@ public class ExampapertopicController {
             }
             if(cuoti){
                 examrewrongquestionList.add(examrewrongquestionEntity);
-                cuoti = false;
             }
             examredetailsList.add(examredetailsEntity);
         }
 
         examredetailsService.insertBatch(examredetailsList);
-        examrewrongquestionService.insertBatch(examrewrongquestionList);
+        if(!examrewrongquestionList.isEmpty()){
+            examrewrongquestionService.insertBatch(examrewrongquestionList);
+        }
         examrecordService.updateById(examrecordEntity);
         return R.ok();
     }
