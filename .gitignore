@@ -5,9 +5,22 @@
 Thumbs.db
 .DS_Store
 
+# JDK（二进制，不入库）
+oracleJdk-26.jdk/
+
+# 本地工具（Maven 等二进制）
+.tools/
+
+# Office 临时文件
+~$*
+
 # Maven / Java build output
 target/
 **/target/
+*.class
+*.jar
+*.jar.original
+*.war
 
 # Frontend dependencies
 node_modules/
